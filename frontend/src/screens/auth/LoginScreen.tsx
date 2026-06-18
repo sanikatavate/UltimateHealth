@@ -194,7 +194,6 @@ const LoginScreen = ({navigation, route}: LoginScreenProp) => {
               }
             }
           },
-
           onError: (error: AxiosError) => {
             if (__DEV__) {
               console.log('Error', error);
@@ -214,24 +213,22 @@ const LoginScreen = ({navigation, route}: LoginScreenProp) => {
                     'Error',
                     'Email not verified. Please check your email.',
                   );
-                  return;
-                }
-                navigation.reset({
-                  index: 0,
-                  routes: [{name: 'TabNavigation'}],
-                });
-              }, 1000);
+                  break;
+                case 404:
+                  Alert.alert('Error', 'User not found');
+                  break;
+                default:
+                  Alert.alert('Error', 'Internal server error');
+              }
             } else {
-              Alert.alert('Token not found');
+              Alert.alert('Error', 'Something went wrong');
             }
-          } catch (e) {
-            if (__DEV__) console.log('Async Storage ERROR', e);
-          } finally {
-            setIsSubmitting(false);
-          }
-        },
+          },
+        }
       );
   };
+
+
 
   const handleEmailInputBack = () => {
     setEmailInputVisible(false);

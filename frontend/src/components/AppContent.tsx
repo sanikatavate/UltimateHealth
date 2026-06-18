@@ -21,7 +21,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { addEventListener } from '@react-native-community/netinfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { TamaguiProvider, useTheme } from 'tamagui';
-import { initDeepLinking } from '../helper/DeepLinkService';
+
 import StackNavigation from '../navigations/StackNavigation';
 import { CustomAlertDialog } from './CustomAlert';
 import UpdateModal from './UpdateModal';

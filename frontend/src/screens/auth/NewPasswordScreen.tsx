@@ -101,9 +101,6 @@ export default function NewPasswordScreen({
     );
   };
 
-    );
-  };
-
   const insets = useSafeAreaInsets();
   if (isPending) {
     return <Loader />;
@@ -241,13 +238,6 @@ export default function NewPasswordScreen({
                   </XStack>
                 )}
               />
-                  <Icon
-                    name={secureTextEntry ? 'eye-off' : 'eye'}
-                    size={20}
-                    color={theme.gray700.val}
-                  />
-                </Button>
-              </XStack>
 
               {/* Password Requirements */}
               <XStack gap="$2" alignItems="center" paddingLeft="$2">
@@ -354,13 +344,6 @@ export default function NewPasswordScreen({
                   </XStack>
                 )}
               />
-                  <Icon
-                    name={secureNewTextEntry ? 'eye-off' : 'eye'}
-                    size={20}
-                    color={theme.gray600.val}
-                  />
-                </Button>
-              </XStack>
 
               {/* Confirmation Status */}
               {confirmPassword && (
@@ -418,43 +401,25 @@ export default function NewPasswordScreen({
 
           {/* Return Link */}
           <Button
-            backgroundColor={
-              password && confirmPassword &&
-              password === confirmPassword && passwordVerify
-                ? '$blue10' : '$gray7'
-            }
-            w="100%"
-            h={56}
-            borderRadius={12}
-            disabled={
-              !password || !confirmPassword ||
-              password !== confirmPassword ||
-              !passwordVerify || isSubmitting || isPending
-            }
-            onPress={handlePasswordSubmit}
-            opacity={isSubmitting || isPending ? 0.6 : 1}>
-            {isSubmitting || isPending ? (
-              <ActivityIndicator color="white" />
-            ) : (
-              <Text fontSize={17} fontWeight="600" color="white">
-                Reset Password
+            chromeless
+            marginTop="$5"
+            onPress={() => navigation.navigate('LoginScreen', {})}
+            padding="$2"
+            height="auto">
+            <XStack ai="center" gap="$2">
+              <Icon
+                color="$gray400"
+                name="arrow-back-circle-outline"
+                size={24}
+              />
+              <Text color="$blue10" fontWeight="600" fontSize={15}>
+                Back to Login
               </Text>
-            )}
+            </XStack>
           </Button>
         </Card>
       </YStack>
     </YStack>
   );
-}
-function setErrorMessage(arg0: null) {
-  throw new Error('Function not implemented.');
-}
-
-function setPassword(pass: string) {
-  throw new Error('Function not implemented.');
-}
-
-function setPasswordVerify(arg0: boolean) {
-  throw new Error('Function not implemented.');
 }
 
